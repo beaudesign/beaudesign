@@ -11,6 +11,7 @@ import {
   Clock,
   ChevronLeft,
   ChevronRight,
+  Sparkles,
 } from "lucide-react"
 
 interface NavItem {
@@ -21,8 +22,8 @@ interface NavItem {
 }
 
 interface SidebarProps {
-  currentView: "home" | "chat"
-  onViewChange: (view: "home" | "chat") => void
+  currentView: "home" | "chat" | "skills"
+  onViewChange: (view: "home" | "chat" | "skills") => void
 }
 
 export function Sidebar({ currentView, onViewChange }: SidebarProps) {
@@ -45,6 +46,12 @@ export function Sidebar({ currentView, onViewChange }: SidebarProps) {
       label: "New Chat",
       icon: <MessageSquare className="w-5 h-5" />,
       onClick: () => onViewChange("chat"),
+    },
+    {
+      id: "skills",
+      label: "Skills",
+      icon: <Sparkles className="w-5 h-5" />,
+      onClick: () => onViewChange("skills"),
     },
   ]
 

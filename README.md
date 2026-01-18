@@ -1,4 +1,4 @@
-# Relay - Interactive AI Product
+# Design Trials
 
 Relay is an interactive AI product similar to Claude Imagine, featuring a modular homepage and universal chat window.
 

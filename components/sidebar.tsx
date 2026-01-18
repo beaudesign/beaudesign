@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import {
@@ -11,13 +12,15 @@ import {
   Clock,
   ChevronLeft,
   ChevronRight,
+  Brain,
 } from "lucide-react"
 
 interface NavItem {
   id: string
   label: string
   icon: React.ReactNode
-  onClick: () => void
+  onClick?: () => void
+  href?: string
 }
 
 interface SidebarProps {
@@ -45,6 +48,12 @@ export function Sidebar({ currentView, onViewChange }: SidebarProps) {
       label: "New Chat",
       icon: <MessageSquare className="w-5 h-5" />,
       onClick: () => onViewChange("chat"),
+    },
+    {
+      id: "interpretability",
+      label: "Interpretability",
+      icon: <Brain className="w-5 h-5" />,
+      href: "/interpretability",
     },
   ]
 
@@ -81,20 +90,44 @@ export function Sidebar({ currentView, onViewChange }: SidebarProps) {
 
       {/* Navigation */}
       <div className="p-3 space-y-1">
-        {navItems.map((item) => (
-          <Button
-            key={item.id}
-            variant={currentView === item.id ? "secondary" : "ghost"}
-            className={cn(
-              "w-full justify-start gap-3",
-              isCollapsed && "justify-center px-0"
-            )}
-            onClick={item.onClick}
-          >
-            {item.icon}
-            {!isCollapsed && <span>{item.label}</span>}
-          </Button>
-        ))}
+        {navItems.map((item) => {
+          const buttonContent = (
+            <>
+              {item.icon}
+              {!isCollapsed && <span>{item.label}</span>}
+            </>
+          )
+
+          if (item.href) {
+            return (
+              <Link key={item.id} href={item.href}>
+                <Button
+                  variant="ghost"
+                  className={cn(
+                    "w-full justify-start gap-3",
+                    isCollapsed && "justify-center px-0"
+                  )}
+                >
+                  {buttonContent}
+                </Button>
+              </Link>
+            )
+          }
+
+          return (
+            <Button
+              key={item.id}
+              variant={currentView === item.id ? "secondary" : "ghost"}
+              className={cn(
+                "w-full justify-start gap-3",
+                isCollapsed && "justify-center px-0"
+              )}
+              onClick={item.onClick}
+            >
+              {buttonContent}
+            </Button>
+          )
+        })}
       </div>
 
       {/* Recent Chats */}

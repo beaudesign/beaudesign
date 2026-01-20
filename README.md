@@ -1,13 +1,28 @@
 # Design Trials
 
+A collection of design prototypes and RL training environments.
+
+## Projects
+
+### 1. Relay - Interactive AI Product
 Relay is an interactive AI product similar to Claude Imagine, featuring a modular homepage and universal chat window.
+
+### 2. Slack Replica - RL Training Environment
+A functional Slack clone designed as a training environment for Reinforcement Learning agents. This prototype simulates workplace collaboration software to help AI agents learn software interaction patterns. See [SLACK_RL_ENV.md](SLACK_RL_ENV.md) for detailed documentation.
 
 ## Features
 
+### Relay Features
 - **Modular Homepage**: A beautiful, card-based interface where widgets and chats are recorded
 - **Universal Chat Window**: An interactive chat interface accessible through the sidebar
 - **Sidebar Navigation**: Easy navigation between home and chat views with recent chat history
 - **Modern Design System**: Built with Carbon Design System principles
+
+### Slack Replica Features
+- **Channel Navigation**: Switch between multiple workspace channels
+- **Real-time Messaging**: Send and receive messages with timestamp tracking
+- **User Interface**: Professional Slack-like dark theme
+- **RL Training Ready**: Designed for AI agent training with clear action spaces
 
 ## Tech Stack
 
@@ -38,24 +53,39 @@ npm run dev
 
 3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Available Routes
+
+- `/` - Relay homepage
+- `/slack` - Slack replica RL training environment
+- `/interpretability` - Interpretability visualization tool
+
 ## Project Structure
 
 ```
 /app
-  page.tsx           # Main page component
-  layout.tsx         # Root layout with IBM Plex fonts
-  globals.css        # Global styles with Carbon Design tokens
+  page.tsx                # Relay homepage
+  layout.tsx              # Root layout with IBM Plex fonts
+  globals.css             # Global styles with Carbon Design tokens
+  /slack
+    page.tsx              # Slack replica main page
+  /interpretability
+    page.tsx              # Interpretability tool
 /components
-  relay-layout.tsx   # Main layout component
-  modular-homepage.tsx  # Homepage with action cards
-  chat-window.tsx    # Universal chat window
-  sidebar.tsx        # Navigation sidebar
-  /ui               # ShadCN UI components
+  relay-layout.tsx        # Main layout component
+  modular-homepage.tsx    # Homepage with action cards
+  chat-window.tsx         # Universal chat window
+  sidebar.tsx             # Navigation sidebar
+  /slack                  # Slack replica components
+    channel-sidebar.tsx   # Channel list and navigation
+    message-list.tsx      # Message display
+    message-input.tsx     # Message composition
+  /ui                     # ShadCN UI components
     button.tsx
     input.tsx
     card.tsx
 /lib
-  utils.ts          # Utility functions
+  utils.ts                # Utility functions
+  slack-types.ts          # TypeScript types for Slack
 ```
 
 ## Design Tokens

@@ -1,5 +1,7 @@
-import { RelayLayout } from "@/components/relay-layout"
+'use client'
 
-export default function Home() {
-  return <RelayLayout />
+import { BentoGrid } from '@/components/bento/bento-grid'
+
+export default function HomePage() {
+  return <BentoGrid />
 }
